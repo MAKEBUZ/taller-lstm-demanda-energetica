@@ -36,3 +36,7 @@ Las columnas `hora`, `dia_semana`, `mes` y `fin_semana` se calculan desde `times
 4. Abra el enlace `*.streamlit.app` generado y compruebe una predicción con el ejemplo de la app. Ese es el enlace que puede compartir; `127.0.0.1` solo funciona en su computador.
 
 No hace falta ejecutar el entrenamiento en la nube: el repositorio incluye los pesos y parámetros ya calculados. Se requieren una cuenta de GitHub y una de Streamlit Community Cloud para publicar el enlace.
+
+### Si aparece un error de TensorFlow al instalar
+
+Compruebe en los logs la versión de Python. `tensorflow-cpu==2.21.0` tiene paquete para **Python 3.12**, pero no para **Python 3.14**. Streamlit Community Cloud no permite cambiar la versión de Python de una app ya creada. Guarde primero su URL y cualquier configuración o secreto; luego elimine esa app y créela de nuevo con el mismo repositorio, rama `main` y archivo `app.py`. Antes de pulsar **Deploy**, abra **Advanced settings** y seleccione **Python 3.12**. Cambiar solo `requirements.txt` o reiniciar la app no corrige un entorno que ya fue creado con Python 3.14.
