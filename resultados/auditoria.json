@@ -1,0 +1,47 @@
+{
+  "filas_originales": 17550,
+  "duplicados_exactos": 30,
+  "faltantes_originales": {
+    "timestamp": 0,
+    "demanda_mw": 0,
+    "temperatura_c": 70,
+    "humedad_pct": 70,
+    "viento_kmh": 71,
+    "radiacion_wm2": 0,
+    "precipitacion_mm": 0,
+    "precio_kwh": 70,
+    "hora": 0,
+    "dia_semana": 0,
+    "fin_semana": 0,
+    "festivo": 0,
+    "mes": 0,
+    "periodo_dia": 0,
+    "demanda_objetivo": 1
+  },
+  "periodos_corregidos": 80,
+  "horas_ausentes": 0,
+  "filas_tras_duplicados": 17520,
+  "fallos_fisicos": 157,
+  "fallos_estadisticos": 47,
+  "filas_entrada_valida": 17177,
+  "objetivos_validos": 17519,
+  "limites_iqr_entrenamiento": {
+    "demanda_mw": [
+      18.750000000000114,
+      1238.52
+    ],
+    "temperatura_c": [
+      -20.582499999999996,
+      57.10999999999999
+    ],
+    "viento_kmh": [
+      -15.719999999999999,
+      37.65
+    ],
+    "precio_kwh": [
+      -10.034299999999991,
+      58.61139999999999
+    ]
+  },
+  "regla": "Excluir ventanas con faltantes o anomalías; no imputar mediciones."
+}

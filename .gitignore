@@ -1,0 +1,9 @@
+.deps/
+.venv/
+.mplconfig/
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
+ejecutar_taller.ps1
+Taller_lstm2026_2.pdf
+resultados/predicciones_*.csv

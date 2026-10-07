@@ -1,0 +1,6 @@
+{
+  "modelo": "base",
+  "ventana": 48,
+  "MAE_validacion": 22.860445022583008,
+  "archivo_predicciones": "predicciones_base_48h.csv"
+}
