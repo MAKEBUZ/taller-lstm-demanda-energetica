@@ -4,6 +4,12 @@ Autor: Diego Alejandro Ocampo Madroñero.
 
 El proyecto usa Python. El script `taller_lstm.py` limpia el CSV, ajusta la normalización solo con entrenamiento, prueba 3 arquitecturas × 3 ventanas, guarda resultados y genera las gráficas. `app.py` despliega la mejor configuración seleccionada por MAE de validación.
 
+## Aviso sobre el alcance
+
+La app usa las últimas **48 horas históricas consecutivas** de variables observadas y estima únicamente la demanda de la **hora siguiente en MW**. No recibe datos futuros ni `demanda_objetivo` como entrada. La predicción es un resultado académico y orientativo; debe evaluarse y supervisarse antes de usarla en decisiones operativas.
+
+Este repositorio contiene el código y los resultados del taller. Su página en GitHub no ejecuta la app: el enlace web para otros usuarios se obtiene al completar el despliegue en Streamlit Community Cloud.
+
 ## Ejecución local
 
 Con Python 3.12 instalado:
@@ -20,7 +26,7 @@ Los productos principales están en `resultados/`: `dataset_limpio_auditado.csv`
 
 La división temporal usa como objetivo `timestamp + 1 hora`: entrenamiento hasta el 31 de marzo de 2026, validación del 1 de abril al 30 de junio de 2026, y prueba desde el 1 de julio de 2026. Una ventana de validación o prueba puede usar historia previa; su objetivo siempre pertenece a su partición.
 
-La app solicita las últimas horas observadas, no variables futuras. Las columnas `hora`, `dia_semana`, `mes` y `fin_semana` se calculan desde `timestamp`, para evitar inconsistencias. `demanda_objetivo` no se utiliza como entrada.
+Las columnas `hora`, `dia_semana`, `mes` y `fin_semana` se calculan desde `timestamp`, para evitar inconsistencias.
 
 ## Publicar con Streamlit Community Cloud
 

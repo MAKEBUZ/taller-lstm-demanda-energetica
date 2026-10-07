@@ -10,7 +10,7 @@ from taller_lstm import NUMERIC, OUT, PERIODS, feature_frame, make_model, load_w
 
 st.set_page_config(page_title="Predicción de demanda LSTM", layout="wide")
 st.title("Predicción de demanda eléctrica: próxima hora")
-st.write("Ingrese horas **históricas consecutivas**. El modelo no recibe datos futuros ni la columna objetivo.")
+st.write("Ingrese horas históricas consecutivas para estimar la demanda de la hora siguiente.")
 
 config_path = OUT / "normalizacion.json"
 info_path = OUT / "mejor_modelo.json"
@@ -24,6 +24,12 @@ info = json.loads(info_path.read_text(encoding="utf-8"))
 audit = json.loads((OUT / "auditoria.json").read_text(encoding="utf-8"))
 size = int(info["ventana"])
 st.info(f"Modelo seleccionado por validación: {info['modelo']} · ventana de {size} horas")
+st.warning(
+    f"**Aviso sobre el alcance:** la predicción usa las últimas {size} horas observadas y estima "
+    "solo la demanda de la hora siguiente, en MW. No se ingresan datos futuros ni la columna "
+    "`demanda_objetivo`. Es un resultado académico y orientativo, no una garantía para "
+    "decisiones operativas."
+)
 
 required = ["timestamp", *NUMERIC, "festivo", "periodo_dia"]
 uploaded = st.file_uploader("Cargue un CSV con al menos las últimas horas requeridas", type="csv")
@@ -83,6 +89,5 @@ if st.button("Predecir siguiente hora", type="primary"):
         predicted = standardized * config["target_scale"] + config["target_mean"]
         target_time = edited.timestamp.iloc[-1] + pd.Timedelta(hours=1)
         st.metric(f"Demanda estimada para {target_time:%Y-%m-%d %H:%M}", f"{predicted:,.2f} MW")
-        st.caption("Estimación estadística; revise los errores en la tabla de resultados antes de usarla para decisiones operativas.")
     except (ValueError, TypeError, KeyError) as exc:
         st.error(str(exc))
