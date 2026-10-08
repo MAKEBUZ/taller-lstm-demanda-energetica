@@ -8,7 +8,7 @@ El proyecto usa Python. El script `taller_lstm.py` limpia el CSV, ajusta la norm
 
 La app usa las últimas **48 horas históricas consecutivas** de variables observadas y estima únicamente la demanda de la **hora siguiente en MW**. No recibe datos futuros ni `demanda_objetivo` como entrada. La predicción es un resultado académico y orientativo; debe evaluarse y supervisarse antes de usarla en decisiones operativas.
 
-Este repositorio contiene el código y los resultados del taller. Su página en GitHub no ejecuta la app: el enlace web para otros usuarios se obtiene al completar el despliegue en Streamlit Community Cloud.
+Este repositorio contiene el código y los resultados del taller. La app está disponible en [Streamlit Community Cloud](https://taller-lstm-demanda-energetica-makebuz.streamlit.app/).
 
 ## Ejecución local
 
@@ -32,7 +32,7 @@ Las columnas `hora`, `dia_semana`, `mes` y `fin_semana` se calculan desde `times
 
 1. En [share.streamlit.io](https://share.streamlit.io), conecte su cuenta de GitHub y elija **Create app**.
 2. Seleccione `MAKEBUZ/taller-lstm-demanda-energetica`, rama `main` y `app.py` como archivo principal.
-3. En **Advanced settings**, seleccione Python 3.12, la versión usada para probar el proyecto. Pulse **Deploy**.
+3. En **Advanced settings**, seleccione Python 3.12, pulse **Save** y luego **Deploy**.
 4. Abra el enlace `*.streamlit.app` generado y compruebe una predicción con el ejemplo de la app. Ese es el enlace que puede compartir; `127.0.0.1` solo funciona en su computador.
 
 No hace falta ejecutar el entrenamiento en la nube: el repositorio incluye los pesos y parámetros ya calculados. Se requieren una cuenta de GitHub y una de Streamlit Community Cloud para publicar el enlace.
